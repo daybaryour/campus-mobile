@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Campus Mobile</string>
+    <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true">ALWAYS_SEND</string>
 </resources>

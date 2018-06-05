@@ -26,6 +26,9 @@ var ANDROID_MANIFEST_PATH = './android/app/src/main/AndroidManifest.xml';
 var IOS_GOOGLE_SERVICES_PATH = './ios/GoogleService-Info.plist';
 var ANDROID_GOOGLE_SERVICES_PATH = './android/app/google-services.json';
 
+var ANDROID_APPCENTER_PATH = './android/app/src/main/assets/appcenter-config.json';
+var IOS_APPCENTER_PATH = './ios/CampusMobile/AppCenter-Config.plist';
+
 var APP_NAME = myEnv.APP_NAME;
 var APP_NAME_PH = myEnv.APP_NAME_PH;
 
@@ -41,6 +44,10 @@ var GOOGLE_MAPS_API_KEY_PH = myEnv.GOOGLE_MAPS_API_KEY_PH;
 var FIREBASE_IOS_KEY = myEnv.FIREBASE_IOS_KEY;
 var FIREBASE_ANDROID_KEY = myEnv.FIREBASE_ANDROID_KEY;
 var FIREBASE_KEY_PH = myEnv.FIREBASE_KEY_PH;
+
+var APPCENTER_SECRET_ANDROID = myEnv.APPCENTER_SECRET_ANDROID;
+var APPCENTER_SECRET_IOS = myEnv.APPCENTER_SECRET_IOS;
+var APPCENTER_PH = myEnv.APPCENTER_PH;
 
 if (REPLACEMENT_TYPE === 'production' || REPLACEMENT_TYPE === 'placeholder') {
 	// AppSettings.js
@@ -79,6 +86,15 @@ if (REPLACEMENT_TYPE === 'production' || REPLACEMENT_TYPE === 'placeholder') {
 		{ prodVal: FIREBASE_ANDROID_KEY, phVal: FIREBASE_KEY_PH },
 	]);
 
+	// appcenter-config.json
+	makeReplacements(ANDROID_APPCENTER_PATH, REPLACEMENT_TYPE, [
+		{ prodVal: APPCENTER_SECRET_ANDROID, phVal: APPCENTER_PH },
+	]);
+
+	// AppCenter-Config.plist
+	makeReplacements(IOS_APPCENTER_PATH, REPLACEMENT_TYPE, [
+		{ prodVal: APPCENTER_SECRET_IOS, phVal: APPCENTER_PH },
+	]);
 } else {
 	console.log('Error: Replacement type not specififed');
 	console.log('Sample Usage: npm run-script [insert-production-values|insert-placeholder-values]');

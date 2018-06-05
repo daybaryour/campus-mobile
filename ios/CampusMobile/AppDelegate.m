@@ -8,6 +8,8 @@
  */
 
 #import "AppDelegate.h"
+#import <AppCenterReactNativeCrashes/AppCenterReactNativeCrashes.h>
+#import <AppCenterReactNative/AppCenterReactNative.h>
 
 #import "RCTUtils.h"
 #import "RCTBundleURLProvider.h"
@@ -21,6 +23,10 @@
   [FIRApp configure];
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
   NSURL *jsCodeLocation;
+
+  [AppCenterReactNativeCrashes registerWithAutomaticProcessing];  // Initialize AppCenter crashes
+
+  [AppCenterReactNative register];  // Initialize AppCenter 
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
